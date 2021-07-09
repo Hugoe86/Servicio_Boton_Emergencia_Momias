@@ -42,6 +42,15 @@ namespace Notificaciones_Boton_
             this.Txt_Enviar_Cuenta = new Telerik.WinControls.UI.RadTextBoxControl();
             this.Btn_Iniciar_Terminar = new Telerik.WinControls.UI.RadButton();
             this.Timer_Pulso = new System.Windows.Forms.Timer(this.components);
+            this.Btn_Enviar_Pulso = new Telerik.WinControls.UI.RadButton();
+            this.Lbl_Puerto_Pulso = new Telerik.WinControls.UI.RadLabel();
+            this.Txt_Puerto_Pulso = new Telerik.WinControls.UI.RadTextBoxControl();
+            this.Lbl_Resultado_Pulso = new Telerik.WinControls.UI.RadLabel();
+            this.Txt_Resultado_Pulso = new Telerik.WinControls.UI.RadTextBoxControl();
+            this.Txt_Resultado_Fecha_Inicio = new Telerik.WinControls.UI.RadTextBoxControl();
+            this.Txt_Resultado_Fecha_Fin = new Telerik.WinControls.UI.RadTextBoxControl();
+            this.Lbl_Tiempo_Relevador = new Telerik.WinControls.UI.RadLabel();
+            this.Txt_Tiempo_Relevador = new Telerik.WinControls.UI.RadTextBoxControl();
             ((System.ComponentModel.ISupportInitialize)(this.Lbl_Cuenta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Lbl_Contraseña)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Txt_Cuenta)).BeginInit();
@@ -50,6 +59,15 @@ namespace Notificaciones_Boton_
             ((System.ComponentModel.ISupportInitialize)(this.Lbl_Enviar_A)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Txt_Enviar_Cuenta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Btn_Iniciar_Terminar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Btn_Enviar_Pulso)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Lbl_Puerto_Pulso)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Txt_Puerto_Pulso)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Lbl_Resultado_Pulso)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Txt_Resultado_Pulso)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Txt_Resultado_Fecha_Inicio)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Txt_Resultado_Fecha_Fin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Lbl_Tiempo_Relevador)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Txt_Tiempo_Relevador)).BeginInit();
             this.SuspendLayout();
             // 
             // Lbl_Cuenta
@@ -127,14 +145,100 @@ namespace Notificaciones_Boton_
             // 
             // Timer_Pulso
             // 
-            this.Timer_Pulso.Interval = 500;
             this.Timer_Pulso.Tick += new System.EventHandler(this.Timer_Pulso_Tick);
+            // 
+            // Btn_Enviar_Pulso
+            // 
+            this.Btn_Enviar_Pulso.Location = new System.Drawing.Point(645, 156);
+            this.Btn_Enviar_Pulso.Name = "Btn_Enviar_Pulso";
+            this.Btn_Enviar_Pulso.Size = new System.Drawing.Size(143, 24);
+            this.Btn_Enviar_Pulso.TabIndex = 8;
+            this.Btn_Enviar_Pulso.Text = "Enviar Pulso";
+            this.Btn_Enviar_Pulso.Click += new System.EventHandler(this.Btn_Enviar_Pulso_Click);
+            // 
+            // Lbl_Puerto_Pulso
+            // 
+            this.Lbl_Puerto_Pulso.Location = new System.Drawing.Point(645, 49);
+            this.Lbl_Puerto_Pulso.Name = "Lbl_Puerto_Pulso";
+            this.Lbl_Puerto_Pulso.Size = new System.Drawing.Size(88, 16);
+            this.Lbl_Puerto_Pulso.TabIndex = 9;
+            this.Lbl_Puerto_Pulso.Text = "Puerto del pulso";
+            this.Lbl_Puerto_Pulso.ThemeName = "TelerikMetroBlue";
+            // 
+            // Txt_Puerto_Pulso
+            // 
+            this.Txt_Puerto_Pulso.Location = new System.Drawing.Point(645, 73);
+            this.Txt_Puerto_Pulso.Name = "Txt_Puerto_Pulso";
+            this.Txt_Puerto_Pulso.Size = new System.Drawing.Size(143, 20);
+            this.Txt_Puerto_Pulso.TabIndex = 10;
+            this.Txt_Puerto_Pulso.Text = "1";
+            this.Txt_Puerto_Pulso.ThemeName = "TelerikMetroBlue";
+            // 
+            // Lbl_Resultado_Pulso
+            // 
+            this.Lbl_Resultado_Pulso.Location = new System.Drawing.Point(233, 211);
+            this.Lbl_Resultado_Pulso.Name = "Lbl_Resultado_Pulso";
+            this.Lbl_Resultado_Pulso.Size = new System.Drawing.Size(57, 16);
+            this.Lbl_Resultado_Pulso.TabIndex = 6;
+            this.Lbl_Resultado_Pulso.Text = "Resultado";
+            this.Lbl_Resultado_Pulso.ThemeName = "TelerikMetroBlue";
+            // 
+            // Txt_Resultado_Pulso
+            // 
+            this.Txt_Resultado_Pulso.Location = new System.Drawing.Point(307, 207);
+            this.Txt_Resultado_Pulso.Name = "Txt_Resultado_Pulso";
+            this.Txt_Resultado_Pulso.Size = new System.Drawing.Size(260, 20);
+            this.Txt_Resultado_Pulso.TabIndex = 11;
+            this.Txt_Resultado_Pulso.ThemeName = "VisualStudio2012Dark";
+            // 
+            // Txt_Resultado_Fecha_Inicio
+            // 
+            this.Txt_Resultado_Fecha_Inicio.Location = new System.Drawing.Point(307, 233);
+            this.Txt_Resultado_Fecha_Inicio.Name = "Txt_Resultado_Fecha_Inicio";
+            this.Txt_Resultado_Fecha_Inicio.Size = new System.Drawing.Size(260, 20);
+            this.Txt_Resultado_Fecha_Inicio.TabIndex = 12;
+            this.Txt_Resultado_Fecha_Inicio.ThemeName = "VisualStudio2012Dark";
+            // 
+            // Txt_Resultado_Fecha_Fin
+            // 
+            this.Txt_Resultado_Fecha_Fin.Location = new System.Drawing.Point(307, 259);
+            this.Txt_Resultado_Fecha_Fin.Name = "Txt_Resultado_Fecha_Fin";
+            this.Txt_Resultado_Fecha_Fin.Size = new System.Drawing.Size(260, 20);
+            this.Txt_Resultado_Fecha_Fin.TabIndex = 13;
+            this.Txt_Resultado_Fecha_Fin.ThemeName = "VisualStudio2012Dark";
+            // 
+            // Lbl_Tiempo_Relevador
+            // 
+            this.Lbl_Tiempo_Relevador.Location = new System.Drawing.Point(645, 99);
+            this.Lbl_Tiempo_Relevador.Name = "Lbl_Tiempo_Relevador";
+            this.Lbl_Tiempo_Relevador.Size = new System.Drawing.Size(44, 16);
+            this.Lbl_Tiempo_Relevador.TabIndex = 14;
+            this.Lbl_Tiempo_Relevador.Text = "Tiempo";
+            this.Lbl_Tiempo_Relevador.ThemeName = "TelerikMetroBlue";
+            // 
+            // Txt_Tiempo_Relevador
+            // 
+            this.Txt_Tiempo_Relevador.Location = new System.Drawing.Point(645, 121);
+            this.Txt_Tiempo_Relevador.Name = "Txt_Tiempo_Relevador";
+            this.Txt_Tiempo_Relevador.Size = new System.Drawing.Size(143, 20);
+            this.Txt_Tiempo_Relevador.TabIndex = 15;
+            this.Txt_Tiempo_Relevador.Text = "750";
+            this.Txt_Tiempo_Relevador.ThemeName = "TelerikMetroBlue";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Txt_Tiempo_Relevador);
+            this.Controls.Add(this.Lbl_Tiempo_Relevador);
+            this.Controls.Add(this.Txt_Resultado_Fecha_Fin);
+            this.Controls.Add(this.Txt_Resultado_Fecha_Inicio);
+            this.Controls.Add(this.Txt_Resultado_Pulso);
+            this.Controls.Add(this.Lbl_Resultado_Pulso);
+            this.Controls.Add(this.Txt_Puerto_Pulso);
+            this.Controls.Add(this.Lbl_Puerto_Pulso);
+            this.Controls.Add(this.Btn_Enviar_Pulso);
             this.Controls.Add(this.Btn_Iniciar_Terminar);
             this.Controls.Add(this.Txt_Enviar_Cuenta);
             this.Controls.Add(this.Lbl_Enviar_A);
@@ -154,6 +258,15 @@ namespace Notificaciones_Boton_
             ((System.ComponentModel.ISupportInitialize)(this.Lbl_Enviar_A)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Txt_Enviar_Cuenta)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Btn_Iniciar_Terminar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Btn_Enviar_Pulso)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Lbl_Puerto_Pulso)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Txt_Puerto_Pulso)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Lbl_Resultado_Pulso)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Txt_Resultado_Pulso)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Txt_Resultado_Fecha_Inicio)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Txt_Resultado_Fecha_Fin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Lbl_Tiempo_Relevador)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Txt_Tiempo_Relevador)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -173,6 +286,15 @@ namespace Notificaciones_Boton_
         private Telerik.WinControls.UI.RadTextBoxControl Txt_Enviar_Cuenta;
         private Telerik.WinControls.UI.RadButton Btn_Iniciar_Terminar;
         private System.Windows.Forms.Timer Timer_Pulso;
+        private Telerik.WinControls.UI.RadButton Btn_Enviar_Pulso;
+        private Telerik.WinControls.UI.RadLabel Lbl_Puerto_Pulso;
+        private Telerik.WinControls.UI.RadTextBoxControl Txt_Puerto_Pulso;
+        private Telerik.WinControls.UI.RadLabel Lbl_Resultado_Pulso;
+        private Telerik.WinControls.UI.RadTextBoxControl Txt_Resultado_Pulso;
+        private Telerik.WinControls.UI.RadTextBoxControl Txt_Resultado_Fecha_Inicio;
+        private Telerik.WinControls.UI.RadTextBoxControl Txt_Resultado_Fecha_Fin;
+        private Telerik.WinControls.UI.RadLabel Lbl_Tiempo_Relevador;
+        private Telerik.WinControls.UI.RadTextBoxControl Txt_Tiempo_Relevador;
     }
 }
 

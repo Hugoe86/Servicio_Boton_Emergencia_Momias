@@ -26,6 +26,7 @@ namespace Notificaciones_Boton_
         DigitalIO.clsDigitalIO DioProps = new DigitalIO.clsDigitalIO();
         DateTime tiempo_deteccion_inicio = DateTime.MinValue;//    variable para saber la hora en que fue detectada
         Int32 tiempo_segundos_espera_entre_detecciones = 60;//   variable para saber cuanto tiempo tiene que esperar para volver a detectar y enviar correo
+        int Puerto_Entrada = 0;
 
         public Form1()
         {
@@ -101,8 +102,9 @@ namespace Notificaciones_Boton_
                 mail.To.Add(Txt_Enviar_Cuenta.Text);
                 mail.Subject = "Notificación botón de seguridad";
                 mail.IsBodyHtml = true;
+
                 string htmlBody;
-                htmlBody = "Write some HTML code here";
+                htmlBody = "Pruebas: " + DateTime.Now.ToString();
                 mail.Body = htmlBody;
 
                 //  configuración de la cuenta de correo
@@ -118,6 +120,31 @@ namespace Notificaciones_Boton_
 
                 throw;
             }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Btn_Enviar_Pulso_Click(object sender, EventArgs e)
+        {
+            int puerto = 0;
+            int tiempo_pulso = 0;
+
+            try
+            {
+                puerto = Convert.ToInt32(Txt_Puerto_Pulso.Text);
+                tiempo_pulso = Convert.ToInt32(Txt_Tiempo_Relevador.Text);
+
+
+                Pulso(puerto, tiempo_pulso);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
         }
 
 
@@ -163,11 +190,17 @@ namespace Notificaciones_Boton_
 
                 MccDaq.ErrorInfo ULStat = DaqBoard.DIn(PortNum, out DataValue);
 
-                int resul = DataValue & (1 << 2);
+                int resul = DataValue & (1 << Puerto_Entrada);// estructura & (valore esperado << puerto)
 
                 //  validamos el pulso
                 if (resul != 0)
                 {
+                    //  se arroja el resultado
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        Txt_Resultado_Pulso.Text = "1";
+                    });
+
                     //  validamos la variable, que no sea el valor menor de la fecha
                     if (tiempo_deteccion_inicio != DateTime.MinValue)
                     {
@@ -180,6 +213,23 @@ namespace Notificaciones_Boton_
                             //  se asigna la hora
                             tiempo_deteccion_inicio = DateTime.Now;
 
+
+
+                            //  se arroja el resultado
+                            this.Invoke((MethodInvoker)delegate
+                            {
+                                Txt_Resultado_Fecha_Inicio.Text = tiempo_deteccion_inicio.ToString();
+                            });
+
+
+                            DateTime tiempo_deteccion_fin_ = tiempo_deteccion_inicio.AddSeconds(tiempo_segundos_espera_entre_detecciones);
+
+                            //  se arroja el resultado
+                            this.Invoke((MethodInvoker)delegate
+                            {
+                                Txt_Resultado_Fecha_Fin.Text = tiempo_deteccion_fin_.ToString();
+                            });
+
                             Enviar_Correo();
                         }
                     }
@@ -189,14 +239,40 @@ namespace Notificaciones_Boton_
                         //  se asigna la hora
                         tiempo_deteccion_inicio = DateTime.Now;
 
+                        //  se arroja el resultado
+                        this.Invoke((MethodInvoker)delegate
+                        {
+                            Txt_Resultado_Fecha_Inicio.Text = tiempo_deteccion_inicio.ToString();
+                        });
+
+
+                        DateTime tiempo_deteccion_fin = tiempo_deteccion_inicio.AddSeconds(tiempo_segundos_espera_entre_detecciones);
+
+                        //  se arroja el resultado
+                        this.Invoke((MethodInvoker)delegate
+                        {
+                            Txt_Resultado_Fecha_Fin.Text = tiempo_deteccion_fin.ToString();
+                        });
+
+
                         Enviar_Correo();
+
+
+
+
                     }
 
                 }
                 //  se configura la variable con el valor mas chico
                 else
                 {
-                    tiempo_deteccion_inicio = DateTime.MinValue
+                    //  se arroja el resultado
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        Txt_Resultado_Pulso.Text = "0";
+                    });
+
+                    tiempo_deteccion_inicio = DateTime.MinValue;
                 }
 
 
@@ -212,14 +288,14 @@ namespace Notificaciones_Boton_
         /// 
         /// </summary>
         /// <param name="Puerto"></param>
-        private void Pulso(int Puerto)
+        private void Pulso(int Puerto, int tiempo)
         {
             Monitor.Enter(Rele);
 
             try
             {
                 Rele.Activar_Relevador(MccDaq.DigitalLogicState.High, Puerto);
-                Thread.Sleep(150);
+                Thread.Sleep(tiempo);
                 Rele.Activar_Relevador(MccDaq.DigitalLogicState.Low, Puerto);
             }
             finally

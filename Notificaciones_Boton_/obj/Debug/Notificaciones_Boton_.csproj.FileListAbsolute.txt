@@ -11,3 +11,16 @@ C:\Users\eramirez\source\repos\Notificaciones_Boton_\Notificaciones_Boton_\obj\D
 C:\Users\eramirez\source\repos\Notificaciones_Boton_\Notificaciones_Boton_\obj\Debug\Notificaciones_Boton_.pdb
 C:\Users\eramirez\source\repos\Notificaciones_Boton_\Notificaciones_Boton_\bin\Debug\MccDaq.dll
 C:\Users\eramirez\source\repos\Notificaciones_Boton_\Notificaciones_Boton_\obj\Debug\Notificaciones_Boton_.csproj.CopyComplete
+C:\Users\eramirez\Documents\Github\Servicio_Boton_Emergencia_Momias\Notificaciones_Boton_\obj\Debug\Notificaciones_Boton_.csproj.AssemblyReference.cache
+C:\Users\eramirez\Documents\Github\Servicio_Boton_Emergencia_Momias\Notificaciones_Boton_\obj\Debug\Notificaciones_Boton_.Form1.resources
+C:\Users\eramirez\Documents\Github\Servicio_Boton_Emergencia_Momias\Notificaciones_Boton_\obj\Debug\Notificaciones_Boton_.Properties.Resources.resources
+C:\Users\eramirez\Documents\Github\Servicio_Boton_Emergencia_Momias\Notificaciones_Boton_\obj\Debug\Notificaciones_Boton_.csproj.GenerateResource.cache
+C:\Users\eramirez\Documents\Github\Servicio_Boton_Emergencia_Momias\Notificaciones_Boton_\obj\Debug\Notificaciones_Boton_.exe.licenses
+C:\Users\eramirez\Documents\Github\Servicio_Boton_Emergencia_Momias\Notificaciones_Boton_\obj\Debug\Notificaciones_Boton_.csproj.CoreCompileInputs.cache
+C:\Users\eramirez\Documents\Github\Servicio_Boton_Emergencia_Momias\Notificaciones_Boton_\obj\Debug\Notificaciones_Boton_.exe
+C:\Users\eramirez\Documents\Github\Servicio_Boton_Emergencia_Momias\Notificaciones_Boton_\obj\Debug\Notificaciones_Boton_.pdb
+C:\Users\eramirez\Documents\Github\Servicio_Boton_Emergencia_Momias\Notificaciones_Boton_\bin\Debug\Notificaciones_Boton_.exe.config
+C:\Users\eramirez\Documents\Github\Servicio_Boton_Emergencia_Momias\Notificaciones_Boton_\bin\Debug\Notificaciones_Boton_.exe
+C:\Users\eramirez\Documents\Github\Servicio_Boton_Emergencia_Momias\Notificaciones_Boton_\bin\Debug\Notificaciones_Boton_.pdb
+C:\Users\eramirez\Documents\Github\Servicio_Boton_Emergencia_Momias\Notificaciones_Boton_\bin\Debug\MccDaq.dll
+C:\Users\eramirez\Documents\Github\Servicio_Boton_Emergencia_Momias\Notificaciones_Boton_\obj\Debug\Notificaciones_Boton_.csproj.CopyComplete
