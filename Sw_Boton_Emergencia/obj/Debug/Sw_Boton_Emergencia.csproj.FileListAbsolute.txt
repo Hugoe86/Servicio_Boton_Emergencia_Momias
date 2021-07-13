@@ -1,0 +1,10 @@
+C:\Users\eramirez\Documents\Github\Servicio_Boton_Emergencia_Momias\Sw_Boton_Emergencia\bin\Debug\Sw_Boton_Emergencia.exe.config
+C:\Users\eramirez\Documents\Github\Servicio_Boton_Emergencia_Momias\Sw_Boton_Emergencia\bin\Debug\Sw_Boton_Emergencia.exe
+C:\Users\eramirez\Documents\Github\Servicio_Boton_Emergencia_Momias\Sw_Boton_Emergencia\bin\Debug\Sw_Boton_Emergencia.pdb
+C:\Users\eramirez\Documents\Github\Servicio_Boton_Emergencia_Momias\Sw_Boton_Emergencia\bin\Debug\MccDaq.dll
+C:\Users\eramirez\Documents\Github\Servicio_Boton_Emergencia_Momias\Sw_Boton_Emergencia\obj\Debug\Sw_Boton_Emergencia.ProjectInstaller.resources
+C:\Users\eramirez\Documents\Github\Servicio_Boton_Emergencia_Momias\Sw_Boton_Emergencia\obj\Debug\Sw_Boton_Emergencia.csproj.GenerateResource.cache
+C:\Users\eramirez\Documents\Github\Servicio_Boton_Emergencia_Momias\Sw_Boton_Emergencia\obj\Debug\Sw_Boton_Emergencia.csproj.CoreCompileInputs.cache
+C:\Users\eramirez\Documents\Github\Servicio_Boton_Emergencia_Momias\Sw_Boton_Emergencia\obj\Debug\Sw_Boton_Emergencia.csproj.CopyComplete
+C:\Users\eramirez\Documents\Github\Servicio_Boton_Emergencia_Momias\Sw_Boton_Emergencia\obj\Debug\Sw_Boton_Emergencia.exe
+C:\Users\eramirez\Documents\Github\Servicio_Boton_Emergencia_Momias\Sw_Boton_Emergencia\obj\Debug\Sw_Boton_Emergencia.pdb

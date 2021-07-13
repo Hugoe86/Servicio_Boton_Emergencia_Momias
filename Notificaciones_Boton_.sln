@@ -5,16 +5,34 @@ VisualStudioVersion = 16.0.31424.327
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notificaciones_Boton_", "Notificaciones_Boton_\Notificaciones_Boton_.csproj", "{5E5B3406-6B9A-4C06-AB39-6E1D23EF611D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sw_Boton_Emergencia", "Sw_Boton_Emergencia\Sw_Boton_Emergencia.csproj", "{05B32888-05E0-4291-9561-B567907DE68D}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup_Notificaciones", "Setup_Notificaciones\Setup_Notificaciones.vdproj", "{5035F96B-4EC8-4072-BFB8-CE49DECF2893}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{5E5B3406-6B9A-4C06-AB39-6E1D23EF611D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5E5B3406-6B9A-4C06-AB39-6E1D23EF611D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E5B3406-6B9A-4C06-AB39-6E1D23EF611D}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{5E5B3406-6B9A-4C06-AB39-6E1D23EF611D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E5B3406-6B9A-4C06-AB39-6E1D23EF611D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E5B3406-6B9A-4C06-AB39-6E1D23EF611D}.Release|x86.ActiveCfg = Release|Any CPU
+		{05B32888-05E0-4291-9561-B567907DE68D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05B32888-05E0-4291-9561-B567907DE68D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05B32888-05E0-4291-9561-B567907DE68D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{05B32888-05E0-4291-9561-B567907DE68D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05B32888-05E0-4291-9561-B567907DE68D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05B32888-05E0-4291-9561-B567907DE68D}.Release|x86.ActiveCfg = Release|Any CPU
+		{5035F96B-4EC8-4072-BFB8-CE49DECF2893}.Debug|Any CPU.ActiveCfg = Debug
+		{5035F96B-4EC8-4072-BFB8-CE49DECF2893}.Debug|x86.ActiveCfg = Debug
+		{5035F96B-4EC8-4072-BFB8-CE49DECF2893}.Release|Any CPU.ActiveCfg = Release
+		{5035F96B-4EC8-4072-BFB8-CE49DECF2893}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

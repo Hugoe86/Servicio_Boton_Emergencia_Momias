@@ -51,6 +51,14 @@ namespace Notificaciones_Boton_
             this.Txt_Resultado_Fecha_Fin = new Telerik.WinControls.UI.RadTextBoxControl();
             this.Lbl_Tiempo_Relevador = new Telerik.WinControls.UI.RadLabel();
             this.Txt_Tiempo_Relevador = new Telerik.WinControls.UI.RadTextBoxControl();
+            this.Rgau_Grafica_Pulso = new Telerik.WinControls.UI.Gauges.RadRadialGauge();
+            this.radialGaugeArc1 = new Telerik.WinControls.UI.Gauges.RadialGaugeArc();
+            this.radialGaugeArc2 = new Telerik.WinControls.UI.Gauges.RadialGaugeArc();
+            this.radialGaugeNeedle1 = new Telerik.WinControls.UI.Gauges.RadialGaugeNeedle();
+            this.Btn_Graficar = new Telerik.WinControls.UI.RadButton();
+            this.Tmr_Grafica = new System.Windows.Forms.Timer(this.components);
+            this.telerikMetroTheme1 = new Telerik.WinControls.Themes.TelerikMetroTheme();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.Lbl_Cuenta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Lbl_Contraseña)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Txt_Cuenta)).BeginInit();
@@ -68,6 +76,8 @@ namespace Notificaciones_Boton_
             ((System.ComponentModel.ISupportInitialize)(this.Txt_Resultado_Fecha_Fin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Lbl_Tiempo_Relevador)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Txt_Tiempo_Relevador)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Rgau_Grafica_Pulso)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Btn_Graficar)).BeginInit();
             this.SuspendLayout();
             // 
             // Lbl_Cuenta
@@ -94,7 +104,6 @@ namespace Notificaciones_Boton_
             this.Txt_Cuenta.Name = "Txt_Cuenta";
             this.Txt_Cuenta.Size = new System.Drawing.Size(260, 20);
             this.Txt_Cuenta.TabIndex = 2;
-            this.Txt_Cuenta.Text = "ventas_momias@hotmail.com";
             this.Txt_Cuenta.ThemeName = "TelerikMetroBlue";
             // 
             // Txt_Contraseña
@@ -103,7 +112,6 @@ namespace Notificaciones_Boton_
             this.Txt_Contraseña.Name = "Txt_Contraseña";
             this.Txt_Contraseña.Size = new System.Drawing.Size(260, 20);
             this.Txt_Contraseña.TabIndex = 3;
-            this.Txt_Contraseña.Text = "P@ssw0rd2021";
             this.Txt_Contraseña.ThemeName = "TelerikMetroBlue";
             // 
             // Btn_Enviar_Correo
@@ -131,7 +139,6 @@ namespace Notificaciones_Boton_
             this.Txt_Enviar_Cuenta.Name = "Txt_Enviar_Cuenta";
             this.Txt_Enviar_Cuenta.Size = new System.Drawing.Size(260, 20);
             this.Txt_Enviar_Cuenta.TabIndex = 6;
-            this.Txt_Enviar_Cuenta.Text = "enrique.ramirez@contel.com.mx";
             this.Txt_Enviar_Cuenta.ThemeName = "TelerikMetroBlue";
             // 
             // Btn_Iniciar_Terminar
@@ -225,11 +232,74 @@ namespace Notificaciones_Boton_
             this.Txt_Tiempo_Relevador.Text = "750";
             this.Txt_Tiempo_Relevador.ThemeName = "TelerikMetroBlue";
             // 
+            // Rgau_Grafica_Pulso
+            // 
+            this.Rgau_Grafica_Pulso.BackColor = System.Drawing.Color.White;
+            this.Rgau_Grafica_Pulso.CausesValidation = false;
+            this.Rgau_Grafica_Pulso.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.radialGaugeArc1,
+            this.radialGaugeArc2,
+            this.radialGaugeNeedle1});
+            this.Rgau_Grafica_Pulso.Location = new System.Drawing.Point(307, 331);
+            this.Rgau_Grafica_Pulso.Name = "Rgau_Grafica_Pulso";
+            this.Rgau_Grafica_Pulso.RangeEnd = 50D;
+            this.Rgau_Grafica_Pulso.Size = new System.Drawing.Size(204, 203);
+            this.Rgau_Grafica_Pulso.StartAngle = 180D;
+            this.Rgau_Grafica_Pulso.SweepAngle = 180D;
+            this.Rgau_Grafica_Pulso.TabIndex = 6;
+            this.Rgau_Grafica_Pulso.Text = "radRadialGauge1";
+            this.Rgau_Grafica_Pulso.Value = 0F;
+            // 
+            // radialGaugeArc1
+            // 
+            this.radialGaugeArc1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(190)))), ((int)(((byte)(79)))));
+            this.radialGaugeArc1.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(191)))), ((int)(((byte)(80)))));
+            this.radialGaugeArc1.BindEndRange = true;
+            this.radialGaugeArc1.Name = "radialGaugeArc1";
+            this.radialGaugeArc1.RangeEnd = 0D;
+            this.radialGaugeArc1.Width = 40D;
+            // 
+            // radialGaugeArc2
+            // 
+            this.radialGaugeArc2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(193)))), ((int)(((byte)(193)))));
+            this.radialGaugeArc2.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(194)))), ((int)(((byte)(194)))));
+            this.radialGaugeArc2.BindStartRange = true;
+            this.radialGaugeArc2.Name = "radialGaugeArc2";
+            this.radialGaugeArc2.RangeEnd = 100D;
+            this.radialGaugeArc2.Width = 40D;
+            // 
+            // radialGaugeNeedle1
+            // 
+            this.radialGaugeNeedle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.radialGaugeNeedle1.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.radialGaugeNeedle1.BackLenghtPercentage = 0D;
+            this.radialGaugeNeedle1.BindValue = true;
+            this.radialGaugeNeedle1.InnerPointRadiusPercentage = 0D;
+            this.radialGaugeNeedle1.LenghtPercentage = 94D;
+            this.radialGaugeNeedle1.Name = "radialGaugeNeedle1";
+            this.radialGaugeNeedle1.Thickness = 5D;
+            this.radialGaugeNeedle1.Value = 0F;
+            // 
+            // Btn_Graficar
+            // 
+            this.Btn_Graficar.Location = new System.Drawing.Point(46, 358);
+            this.Btn_Graficar.Name = "Btn_Graficar";
+            this.Btn_Graficar.Size = new System.Drawing.Size(145, 56);
+            this.Btn_Graficar.TabIndex = 16;
+            this.Btn_Graficar.Text = "Graficar";
+            this.Btn_Graficar.Click += new System.EventHandler(this.Btn_Graficar_Click);
+            // 
+            // Tmr_Grafica
+            // 
+            this.Tmr_Grafica.Tick += new System.EventHandler(this.Tmr_Grafica_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 594);
+            this.Controls.Add(this.Btn_Graficar);
+            this.Controls.Add(this.Rgau_Grafica_Pulso);
             this.Controls.Add(this.Txt_Tiempo_Relevador);
             this.Controls.Add(this.Lbl_Tiempo_Relevador);
             this.Controls.Add(this.Txt_Resultado_Fecha_Fin);
@@ -267,6 +337,8 @@ namespace Notificaciones_Boton_
             ((System.ComponentModel.ISupportInitialize)(this.Txt_Resultado_Fecha_Fin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Lbl_Tiempo_Relevador)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Txt_Tiempo_Relevador)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Rgau_Grafica_Pulso)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Btn_Graficar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -295,6 +367,14 @@ namespace Notificaciones_Boton_
         private Telerik.WinControls.UI.RadTextBoxControl Txt_Resultado_Fecha_Fin;
         private Telerik.WinControls.UI.RadLabel Lbl_Tiempo_Relevador;
         private Telerik.WinControls.UI.RadTextBoxControl Txt_Tiempo_Relevador;
+        private Telerik.WinControls.UI.Gauges.RadRadialGauge Rgau_Grafica_Pulso;
+        private Telerik.WinControls.UI.Gauges.RadialGaugeArc radialGaugeArc1;
+        private Telerik.WinControls.UI.Gauges.RadialGaugeArc radialGaugeArc2;
+        private Telerik.WinControls.UI.Gauges.RadialGaugeNeedle radialGaugeNeedle1;
+        private Telerik.WinControls.UI.RadButton Btn_Graficar;
+        private System.Windows.Forms.Timer Tmr_Grafica;
+        private Telerik.WinControls.Themes.TelerikMetroTheme telerikMetroTheme1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
 

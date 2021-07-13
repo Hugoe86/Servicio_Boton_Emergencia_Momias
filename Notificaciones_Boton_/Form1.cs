@@ -13,6 +13,7 @@ using Telerik.WinControls.Themes;
 using DigitalIO;
 using Utilerias;
 using System.Threading;
+using System.IO;
 
 namespace Notificaciones_Boton_
 {
@@ -28,6 +29,19 @@ namespace Notificaciones_Boton_
         Int32 tiempo_segundos_espera_entre_detecciones = 60;//   variable para saber cuanto tiempo tiene que esperar para volver a detectar y enviar correo
         int Puerto_Entrada = 0;
 
+        public String ruta_archivo = "";//  variable para la ruta
+        public string cuenta = "";
+        public string contraseña = "";
+        public string enviar_ = "";
+        public Int32 puerto_ = 0;
+        public Int32 tiempo_ = 0;
+        public string asunto_ = "";
+        public string cuerpo_ = "";
+        public string SmtpClient_ = "";
+        Int32 cont_grafica = 0;
+        Int32 limite_grafica = 50;
+
+
         public Form1()
         {
             InitializeComponent();
@@ -38,11 +52,17 @@ namespace Notificaciones_Boton_
         {
             try
             {
+                //  se cargan los parámetros
+                ruta_archivo = "C:/Parametros_Servicio/parametros.txt";
+                lectura_archivo(ruta_archivo);
+
                 PortType = clsDigitalIO.PORTIN;
                 NumPorts = DioProps.FindPortsOfType(DaqBoard, PortType, out ProgAbility, out PortNum, out NumBits, out FirstBit);
 
                 Rele = new Relevador();
                 Rele.Activar_Relevador();
+
+                
             }
             catch (Exception)
             {
@@ -51,8 +71,85 @@ namespace Notificaciones_Boton_
             }
         }
 
-      
+        /// <summary>
+        /// 
+        /// </summary>
+        public void lectura_archivo(string ruta_archivo)
+        {
+            try
+            {
+                string[] lineas = System.IO.File.ReadAllLines(@"" + ruta_archivo);
 
+                foreach (string linea in lineas)
+                {
+                    if (linea.Contains("cuenta"))
+                    {
+                        string[] valores_ = linea.Split(':');
+
+                        cuenta = valores_[1];
+                        Txt_Cuenta.Text = cuenta;
+
+                    }
+                    else if (linea.Contains("contraseña"))
+                    {
+                        string[] valores_ = linea.Split(':');
+
+                        contraseña = valores_[1];
+                        Txt_Contraseña.Text = contraseña;
+
+                    }
+                    else if (linea.Contains("enviar"))
+                    {
+                        string[] valores_ = linea.Split(':');
+
+                        enviar_ = valores_[1];
+                        Txt_Enviar_Cuenta.Text = enviar_;
+
+                    }
+                    else if (linea.Contains("puerto_entrada"))
+                    {
+                        string[] valores_ = linea.Split(':');
+                        string puerto_auxiliar = "";
+
+                        puerto_auxiliar = valores_[1];
+                        puerto_ = Convert.ToInt32(puerto_auxiliar);
+
+
+                    }
+                    else if (linea.Contains("tiempo_espera"))
+                    {
+                        string[] valores_ = linea.Split(':');
+                        string tiempo_auxiliar = "";
+
+                        tiempo_auxiliar = valores_[1];
+                        tiempo_ = Convert.ToInt32(tiempo_auxiliar);
+
+
+                    }
+                    else if (linea.Contains("asunto"))
+                    {
+                        string[] valores_ = linea.Split(':');
+
+                        asunto_ = valores_[1];
+
+
+                    }
+                    else if (linea.Contains("SmtpClient"))
+                    {
+                        string[] valores_ = linea.Split(':');
+
+                        SmtpClient_ = valores_[1];
+
+
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
 
         /// <summary>
         /// 
@@ -94,13 +191,14 @@ namespace Notificaciones_Boton_
         /// </summary>
         public void Enviar_Correo()
         {
-            SmtpClient correo_server = new SmtpClient("smtp.live.com");
+            SmtpClient correo_server = new SmtpClient(SmtpClient_);
             var mail = new MailMessage();
+
             try
             {
-                mail.From = new MailAddress(Txt_Cuenta.Text);
-                mail.To.Add(Txt_Enviar_Cuenta.Text);
-                mail.Subject = "Notificación botón de seguridad";
+                mail.From = new MailAddress(cuenta);
+                mail.To.Add(enviar_);
+                mail.Subject = asunto_;
                 mail.IsBodyHtml = true;
 
                 string htmlBody;
@@ -110,7 +208,7 @@ namespace Notificaciones_Boton_
                 //  configuración de la cuenta de correo
                 correo_server.Port = 587;
                 correo_server.UseDefaultCredentials = false;
-                correo_server.Credentials = new System.Net.NetworkCredential(Txt_Cuenta.Text, Txt_Contraseña.Text);
+                correo_server.Credentials = new System.Net.NetworkCredential(cuenta, contraseña);
                 correo_server.EnableSsl = true;
                 correo_server.Send(mail);
 
@@ -128,16 +226,10 @@ namespace Notificaciones_Boton_
         /// <param name="e"></param>
         private void Btn_Enviar_Pulso_Click(object sender, EventArgs e)
         {
-            int puerto = 0;
-            int tiempo_pulso = 0;
-
+          
             try
             {
-                puerto = Convert.ToInt32(Txt_Puerto_Pulso.Text);
-                tiempo_pulso = Convert.ToInt32(Txt_Tiempo_Relevador.Text);
-
-
-                Pulso(puerto, tiempo_pulso);
+                Pulso(puerto_, tiempo_);
             }
             catch (Exception)
             {
@@ -145,6 +237,75 @@ namespace Notificaciones_Boton_
                 throw;
             }
 
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Btn_Graficar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Tmr_Grafica.Start();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Tmr_Grafica_Tick(object sender, EventArgs e)
+        {
+            short DataValue = 0;
+            try
+            {
+                MccDaq.ErrorInfo ULStat = DaqBoard.DIn(PortNum, out DataValue);
+
+                int resul = DataValue & (1 << Puerto_Entrada);// estructura & (valore esperado << puerto)
+
+
+                //  validamos el pulso
+                if (resul != 0)
+                {
+                    if (cont_grafica <= limite_grafica)
+                    {
+                        cont_grafica++;
+                    }
+
+                    //  se arroja el resultado
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        Rgau_Grafica_Pulso.Value = cont_grafica;
+                    });
+                }
+                else
+                {
+                    if (cont_grafica >= 0)
+                    {
+                        cont_grafica--;
+                    }
+
+
+                    //  se arroja el resultado
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        Rgau_Grafica_Pulso.Value = cont_grafica;
+                    });
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
 
@@ -184,6 +345,8 @@ namespace Notificaciones_Boton_
         /// <param name="e"></param>
         private void Timer_Pulso_Tick(object sender, EventArgs e)
         {
+            StreamWriter SW = new StreamWriter("C:\\Parametros_Servicio\\Historial.txt", true);
+
             short DataValue = 0;
             try
             {
@@ -191,7 +354,7 @@ namespace Notificaciones_Boton_
                 MccDaq.ErrorInfo ULStat = DaqBoard.DIn(PortNum, out DataValue);
 
                 int resul = DataValue & (1 << Puerto_Entrada);// estructura & (valore esperado << puerto)
-
+                
                 //  validamos el pulso
                 if (resul != 0)
                 {
@@ -258,6 +421,18 @@ namespace Notificaciones_Boton_
                         Enviar_Correo();
 
 
+                        SW.WriteLine("***********************************************************************************");
+                        SW.WriteLine(DateTime.Now.ToString("dd/MM/yyyy"));
+                        SW.WriteLine("tiempo_deteccion_inicio");
+                        SW.WriteLine(tiempo_deteccion_inicio.ToString("dd/MM/yyyy"));
+
+
+                        SW.WriteLine("_bandera_envio_correo");
+                        //SW.WriteLine(_bandera_envio_correo);
+
+                        SW.WriteLine("pulso si ");
+                        SW.WriteLine("***********************************************************************************");
+
 
 
                     }
@@ -281,6 +456,10 @@ namespace Notificaciones_Boton_
             {
 
                 throw;
+            }
+            finally
+            {
+                SW.Close();
             }
         }
 

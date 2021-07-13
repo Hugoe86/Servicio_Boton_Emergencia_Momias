@@ -1,0 +1,7 @@
+cuenta:ventas_momias@hotmail.com
+contraseña:P@ssw0rd2021
+enviar:enrique.ramirez@contel.com.mx
+puerto_entrada:0
+tiempo_espera:900
+asunto:Notificación
+SmtpClient:smtp.live.com
